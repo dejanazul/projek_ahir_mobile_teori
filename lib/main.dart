@@ -5,6 +5,7 @@ import 'package:projek_ahir_mobile_teori/auth/login/controller/login_controller.
 import 'package:projek_ahir_mobile_teori/auth/login/screen/login_screen.dart';
 import 'package:projek_ahir_mobile_teori/auth/signup/controller/signup_controller.dart';
 import 'package:projek_ahir_mobile_teori/repository/auth_repository.dart';
+import 'package:projek_ahir_mobile_teori/screen/landing.dart';
 
 void main() {
   Get.put(AuthRepository());
@@ -19,6 +20,6 @@ class MainApp extends StatelessWidget {
     Get.lazyPut(() => LoginController(), fenix: true);
     Get.lazyPut(() => SignupController(), fenix: true);
 
-    return const GetMaterialApp(home: LoginScreen());
+    return const GetMaterialApp(home: LandingPage());
   }
 }
