@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:projek_ahir_mobile_teori/features/homepage/screen/homepage.dart';
@@ -10,6 +11,20 @@ class AuthRepository extends GetxController {
   Future<void> login(String email, String password) async {
     try {
       isLoading.value = true;
+      const uri = 'http://10.0.2.2/project_ahir_mobile_teori_2/check_data.php';
+      var res = await http
+          .post(Uri.parse(uri), body: {'email': email, 'password': password});
+      var response = jsonDecode(res.body);
+
+      if (response['success'] == 'true') {
+        Get.offAll(() => const Homepage());
+      } else {
+        Get.snackbar('Error', response['error'],
+            backgroundColor: Colors.red,
+            snackPosition: SnackPosition.BOTTOM,
+            margin: const EdgeInsets.all(16),
+            colorText: Colors.white);
+      }
     } catch (e) {
       throw Exception(e);
     } finally {
@@ -30,6 +45,14 @@ class AuthRepository extends GetxController {
         //pindah halaman
         Get.offAll(() => const Homepage());
       } else {
+        Get.snackbar(
+          'Error',
+          response['error'],
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          margin: const EdgeInsets.all(16),
+          colorText: Colors.white,
+        );
         //snackbar error
       }
     } catch (e) {
@@ -38,4 +61,6 @@ class AuthRepository extends GetxController {
       isLoading.value = false;
     }
   }
+
+  void logout() {}
 }
