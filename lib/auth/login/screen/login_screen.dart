@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:projek_ahir_mobile_teori/auth/login/controller/login_controller.dart';
 import 'package:projek_ahir_mobile_teori/auth/signup/screen/signup_screen.dart';
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:projek_ahir_mobile_teori/auth/login/screen/login_screen.dart';
+import 'package:projek_ahir_mobile_teori/auth/signup/screen/signup_screen.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -46,48 +49,52 @@ class LandingPage extends StatelessWidget {
                     child: SizedBox.expand(
                       child: Column(
                         children: [
-                          SizedBox(height: 12),
+                          const SizedBox(height: 12),
 
                           // Title
                           const Text(
                             'Welcome!',
                             style: TextStyle(color: Colors.white, fontSize: 32),
                           ),
-                          SizedBox(height: 12),
+                          const SizedBox(height: 12),
 
                           const Text(
                             'Lorem ipsum dolor sit amet, adisplicing elit. constructor plast',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
-                          SizedBox(height: 22),
+                          const SizedBox(height: 22),
 
                           // Login Button
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                                style: ButtonStyle(
+                                style: const ButtonStyle(
                                     backgroundColor: WidgetStatePropertyAll(
                                         Color(0xffA57A03))),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(() => const LoginScreen());
+                                },
                                 child: const Text(
                                   'LOGIN',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 20),
                                 )),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
 
                           // SignUp button
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                                style: ButtonStyle(
+                                style: const ButtonStyle(
                                     side: WidgetStatePropertyAll(BorderSide(
                                         color: Color(0xffA57A03), width: 1)),
                                     backgroundColor: WidgetStatePropertyAll(
                                         Color.fromARGB(255, 16, 16, 16))),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(() => const SignupScreen());
+                                },
                                 child: const Text(
                                   'SIGN UP',
                                   style: TextStyle(
