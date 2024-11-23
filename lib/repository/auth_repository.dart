@@ -13,6 +13,7 @@ class AuthRepository extends GetxController {
     try {
       //loading
       isLoading.value = true;
+      print('LOGIN : $email, $password');
 
       const uri = 'http://10.0.2.2/project_ahir_mobile_teori_2/check_data.php';
       var res = await http

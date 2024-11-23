@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:projek_ahir_mobile_teori/features/ticket/screeens/user_ticket_screen.dart';
+import 'package:projek_ahir_mobile_teori/repository/notifications_service.dart';
 
 class DetailScreen extends StatelessWidget {
   final String title;
@@ -275,8 +277,12 @@ class DetailScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                onPressed: () {
+                onPressed: () async {
                   _purchaseTicket(context);
+                  NotificationService().showNotification(
+                      title: 'Ticket Purchased',
+                      body:
+                          'You have successfully purchased the ticket for $title.');
                   Get.to(() => const UserTicketScreen());
                 },
                 child: Text(

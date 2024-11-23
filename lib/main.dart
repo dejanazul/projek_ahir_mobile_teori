@@ -9,9 +9,11 @@ import 'package:projek_ahir_mobile_teori/main_controller.dart';
 import 'package:projek_ahir_mobile_teori/features/homepage/controller/homepage_controller.dart';
 import 'package:projek_ahir_mobile_teori/repository/auth_repository.dart';
 import 'package:projek_ahir_mobile_teori/landing.dart';
+import 'package:projek_ahir_mobile_teori/repository/notifications_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
   await Hive.initFlutter();
   await Hive.openBox('purchasedTickets');
   Get.put(AuthRepository());
