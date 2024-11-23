@@ -12,6 +12,8 @@ function ErrorHandling($con, $field, $variable)
 $username = $_POST['username'] ?? null;
 $email = $_POST['email'] ?? null;
 $password = $_POST['password'] ?? null;
+$iv = $_POST['iv'] ?? null;
+
 
 if (ErrorHandling($con, 'username', $username)) {
     echo json_encode(["success" => "false", "error" => "Username already exist!"]);
@@ -23,12 +25,13 @@ if (ErrorHandling($con, 'email', $email)) {
     return;
 }
 
-$query = "INSERT INTO `user` (`username`, `email`, `password`) VALUES ('$username', '$email', '$password')";
+$query = "INSERT INTO `user` (`username`, `email`, `password`, `iv`) VALUES ('$username', '$email', '$password', '$iv')";
 $ex = mysqli_query($con, $query);
 
 $arr = [];
 if ($ex) {
     $arr['success'] = 'true';
+    $arr['email'] = $email;
 } else {
     $arr['success'] = 'false';
     $arr['error'] = 'Error occured';

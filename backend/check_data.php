@@ -13,12 +13,12 @@ $email = $_POST["email"] ?? null;
 $password = $_POST["password"] ?? null;
 
 if (!ErrorHandling($con, 'email', $email)) {
-    echo json_encode(["success" => "false", "error" => "Wrong email!"]);
+    echo json_encode(["success" => "false", "error" => "Incorrect Email!"]);
     return;
 }
 
 if (!ErrorHandling($con, 'password', $password)) {
-    echo json_encode(["success" => "false", "error" => "Wrong password!"]);
+    echo json_encode(["success" => "false", "error" => "Incorrect Password!"]);
     return;
 }
 
@@ -28,8 +28,9 @@ $ex = mysqli_query($con, $query);
 $arr = [];
 if ($ex) {
     $arr['success'] = 'true';
+    $arr['email'] = $email;
 } else {
-    $arr['success'] = 'true';
+    $arr['success'] = 'false';
     $arr['error'] = 'Error occured!';
 }
 
